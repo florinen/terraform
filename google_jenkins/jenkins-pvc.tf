@@ -11,6 +11,6 @@ resource "kubernetes_persistent_volume_claim" "jenkins-pvc" {
         storage = "15Gi"
       }
     }
-     volume_name = "${kubernetes_persistent_volume.jenkins-pv.metadata.0.terraform-jenkins}"
+     volume_name = "${kubernetes_persistent_volume.jenkins-pv.metadata.0.name}"
   }
 }
