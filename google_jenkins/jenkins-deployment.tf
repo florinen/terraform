@@ -32,6 +32,12 @@ resource "kubernetes_deployment" "jenkins-deployment" {
           name = "jenkins-home"
           empty_dir = {}
         }
+         volume_mounts {
+              mount_path = "/var/run"
+              name = "docker-sock"
+              mount_path = "/var/jenkins_home"
+              name = "jenkins-home"
+         }
           resources {
             limits {
               cpu    = "2"
@@ -42,12 +48,7 @@ resource "kubernetes_deployment" "jenkins-deployment" {
               cpu    = "2"
               memory = "500Mi"
             }
-            volume_mounts {
-              mount_path = "/var/run"
-              name = "docker-sock"
-              mount_path = "/var/jenkins_home"
-              name = "jenkins-home"
-           }
+          
           
           
 
