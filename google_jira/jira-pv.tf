@@ -10,7 +10,7 @@ resource "kubernetes_persistent_volume" "jira-pv" {
     access_modes = ["ReadWriteMany"]
     persistent_volume_source {
       vsphere_volume {
-        volume_path = "/home/Sofia/jira-home"
+        volume_path = "jira-home"
             }
    }
  }

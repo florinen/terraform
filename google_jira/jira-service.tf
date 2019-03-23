@@ -5,14 +5,10 @@ resource "kubernetes_service" "jira-svs" {
   }
 
   spec {
-    selector {
-      app = "${kubernetes_pod.jira-pod.metadata.0.labels.app}"
-    }
-
-    session_affinity = "ClientIP"
+    selector { run = "fscoding"  }
 
     port {
-      port        = 8080
+      port        = 80
       target_port = 8080
     }
 
