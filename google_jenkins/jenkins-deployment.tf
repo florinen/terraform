@@ -41,7 +41,7 @@ resource "kubernetes_deployment" "jenkins-deployment" {
               mount_path = "/var/jenkins_home"
               name = "jenkins-home"
         }
-        
+
           resources {
             limits {
               cpu    = "2"
@@ -61,4 +61,4 @@ resource "kubernetes_deployment" "jenkins-deployment" {
       }
     }
   }
-}
+
