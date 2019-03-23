@@ -35,8 +35,7 @@ resource "kubernetes_deployment" "jenkins-deployment" {
           name  = "jenkins"
 
           volume_mounts {
-              mount_path = "/var/run"
-              name = "docker-sock"
+              
               mount_path = "/var/jenkins_home"
               name = "jenkins-home"
           }        
