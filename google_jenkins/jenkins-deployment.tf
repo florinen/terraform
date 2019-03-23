@@ -35,9 +35,9 @@ resource "kubernetes_deployment" "jenkins-deployment" {
               mount_path = "/var/jenkins_home"
               name = "jenkins-home"
          }        
-        volume {
-          name = "jenkins-home"
-          empty_dir = ""
+          volume {
+              name = "jenkins-home"
+
         }
           
           resources {
