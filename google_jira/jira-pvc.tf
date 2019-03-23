@@ -9,10 +9,10 @@ resource "kubernetes_persistent_volume_claim" "jira-pvc" {
 
     resources {
       requests {
-        storage = "20Gi"
+        storage = "15Gi"
       }
     }
 
-    volume_name = "${kubernetes_persistent_volume.jira-pv.metadata.0.terraform-jira}"
+    volume_name = "jira-pv"
   }
 }

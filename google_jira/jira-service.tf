@@ -5,7 +5,7 @@ resource "kubernetes_service" "jira-svs" {
   }
 
   spec {
-    selector { run = "fscoding"  }
+    selector { app = "terraform-jira"  }
 
     port {
       port        = 80
