@@ -13,7 +13,6 @@ resource "kubernetes_service" "jenkins-svs" {
       port        = 80
       target_port = 8080
       node_port   = 30618
-      protocol    = TCP
     }
 
     type = "LoadBalancer"
