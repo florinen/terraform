@@ -25,9 +25,17 @@ resource "kubernetes_deployment" "jira-deployment" {
       }
 
       spec {
+        volume {
+          name = "jira-home"
+        }
+
         container {
           image = "gcr.io/hightowerlabs/jira:7.3.6-standalone"
           name  = "jira"
+          volume_mount {
+             name       = "jira-home"
+             mount_path = "/opt/jira-home"
+             }
 
           resources {
             limits {
@@ -39,8 +47,10 @@ resource "kubernetes_deployment" "jira-deployment" {
               cpu    = "2"
               memory = "500Mi"
             }
+           }
           }
         }
+
       }
     }
   }

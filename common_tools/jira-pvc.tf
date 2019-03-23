@@ -9,12 +9,6 @@ resource "kubernetes_persistent_volume" "jira-pv" {
     }
 
     access_modes = ["ReadWriteOnce"]
-
-    persistent_volume_source {
-      gce_persistent_disk {
-        pd_name = "jira-pv-pd"
-      }
-    }
   }
 }
 
