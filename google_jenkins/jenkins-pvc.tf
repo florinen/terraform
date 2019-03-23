@@ -14,7 +14,7 @@ resource "kubernetes_persistent_volume" "jenkins-pv" {
       gce_persistent_disk {
         pd_name = "jenkins-pv-pd"
       }
-      vspere_volume {
+      volume {
         volume_path = "/home/jenkins-app/volume"
      }
     }
