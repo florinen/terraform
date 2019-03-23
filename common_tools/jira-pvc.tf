@@ -1,7 +1,6 @@
 resource "kubernetes_persistent_volume" "jira-pv" {
   metadata {
     name = "terraform-jira"
-    namespace = "tools"
   }
 
   spec {
@@ -22,6 +21,7 @@ resource "kubernetes_persistent_volume" "jira-pv" {
 resource "kubernetes_persistent_volume_claim" "jira-pvc" {
   metadata {
     name = "terraform-jira"
+    namespace = "tools"
   }
 
   spec {
