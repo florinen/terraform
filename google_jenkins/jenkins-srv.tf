@@ -22,6 +22,7 @@ resource "kubernetes_service" "jenkins-srv" {
 resource "kubernetes_pod" "jenkins-pod" {
   metadata {
     name = "terraform-jenkins"
+    namespace = "tools"
 
     labels {
       app = "jenkins"

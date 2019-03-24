@@ -8,8 +8,8 @@ resource "kubernetes_persistent_volume" "jenkins-pv" {
         }
         access_modes = ["ReadWriteMany"]
         persistent_volume_source {
-            vsphere_volume {
-                volume_path = "/home/jenkins-app/volume"
+            host_path {
+                path = "/home/jenkins-app/volume"
             }
         }
     }
