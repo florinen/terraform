@@ -1,6 +1,7 @@
 resource "kubernetes_persistent_volume" "jenkins-pv" {
     metadata {
-        name = "terraform-jenkins"
+        name = "jenkins-vlo"
+        volume = "jenkins-vol"
     }
     spec {
         capacity {
@@ -8,8 +9,8 @@ resource "kubernetes_persistent_volume" "jenkins-pv" {
         }
         access_modes = ["ReadWriteMany"]
         persistent_volume_source {
-            vsphere_volume {
-                volume_path = "/home/jenkins-app/volume"
+            volume {
+                volume_path = "/home/jenkins-app/jenkins-vol"
             }
         }
     }
