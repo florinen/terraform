@@ -1,6 +1,6 @@
 resource "kubernetes_persistent_volume_claim" "jenkins-pvc" {
   metadata {
-    name = "terraform-jenkins"
+    name = "jenkins-pvc"
     namespace = "tools"
   }
  
