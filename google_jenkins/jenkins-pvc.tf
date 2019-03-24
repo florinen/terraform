@@ -1,9 +1,9 @@
-resource "kubernetes_persistent_volume_claim" "jenkins-pvc" {
+resource "kubernetes_persistent_volume_claim" "jenkins" {
   metadata {
-    name = "terraform-jenkins"
-    namespace = "tools"
+    name = "jenkins-pvc"
+    app = "jenkins"
   }
- 
+  
   spec {
     access_modes = ["ReadWriteMany"]
     resources {
@@ -11,6 +11,7 @@ resource "kubernetes_persistent_volume_claim" "jenkins-pvc" {
         storage = "15Gi"
       }
     }
+    volume_name = "${kubernetes_persistent_volume.jenkins.metadata.0.name}"
+  }
    
  }
-}

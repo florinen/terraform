@@ -8,6 +8,6 @@ resource "kubernetes_namespace" "tools" {
       mylabel = "jenkins-value"
     }
 
-    name = "terraform-lenkins-ns"
+    name = "terraform-jenkins-ns"
   }
 }

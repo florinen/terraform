@@ -27,7 +27,9 @@ resource "kubernetes_deployment" "jenkins-deployment" {
       spec {
         volume {
           name = "jenkins-home"
-
+        persistent_volume_claim {
+          claim_name = "${kubernetes_persistent_volume_claim.jenkins.metadata.0.name}"
+        }
         }     
 
         container {
@@ -35,8 +37,7 @@ resource "kubernetes_deployment" "jenkins-deployment" {
           name  = "jenkins"
 
           volume_mounts {
-              mount_path = "/var/run"
-              name = "docker-sock"
+            
               mount_path = "/var/jenkins_home"
               name = "jenkins-home"
           }        

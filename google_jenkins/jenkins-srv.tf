@@ -1,4 +1,4 @@
-resource "kubernetes_service" "jenkins-svs" {
+resource "kubernetes_service" "jenkins-srv" {
   metadata {
     name = "terraform-jenkins"
     namespace = "tools"
