@@ -6,7 +6,7 @@ resource "kubernetes_persistent_volume" "jenkins-pv" {
         capacity {
             storage = "15Gi"
         }
-        access_modes = ["ReadWriteMany"]
+        access_modes = ["ReadWriteOnce"]
         persistent_volume_source {
             host_path {
                 path = "/home/jenkins-app/volume"
