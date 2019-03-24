@@ -23,24 +23,13 @@ resource "kubernetes_deployment" "jenkins-deployment" {
           test = "jenkins"
         }
       }
-
-      spec {
-        volume {
-          name = "jenkins-home"
-        
-        }     
-
-        container {
+    
+    spec {
+      container {
           image = "fsadykov/centos_jenkins:0.2"
           name  = "jenkins"
 
-          volume_mounts {
-            
-              mount_path = "/var/jenkins_home"
-              name = "jenkins-home"
-          }        
-    
-          resources {
+         resources {
             limits {
               cpu    = "2"
               memory = "500Mi"
