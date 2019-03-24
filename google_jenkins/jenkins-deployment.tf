@@ -27,9 +27,7 @@ resource "kubernetes_deployment" "jenkins-deployment" {
       spec {
         volume {
           name = "jenkins-home"
-        persistent_volume_claim {
-          claim_name = "${kubernetes_persistent_volume_claim.jenkins.metadata.0.name}"
-        }
+        
         }     
 
         container {
