@@ -1,45 +1,35 @@
-resource "kubernetes_deployment" "jenkins-deployment" {
+resource "kubernetes_deployment" "terraform-jenkins" {
   metadata {
-    name      = "terraform-jenkins"
+    name = "terraform-jenkins"
+    labels { app = "jenkins-terraform-deployment" }
     namespace = "tools"
-  
-    labels {
-      test = "jenkins"
-    }
   }
 
   spec {
     replicas = 1
 
-    selector {
-      match_labels {
-        test = "jenkins"
-      }
+    selector { match_labels { app = "jenkins-pod" }
     }
 
     template {
-      metadata {
-        labels {
-          test = "jenkins"
-        }
+      metadata { labels { app = "jenkins-pod" }
       }
-    
-    spec {
-      container {
-          image = "fsadykov/centos_jenkins:0.2"
+
+      spec {
+        container {
+          image = "fsadykov/centos_jenkins:0.3"
           name  = "jenkins"
 
-         resources {
-            limits {
-              cpu    = "2"
-              memory = "500Mi"
-            }
-
-            requests {
-              cpu    = "2"
-              memory = "500Mi"    
-           }
+          volume_mount {
+            name = "docker-sock"
+            mount_path = "/var/run"
           }
+
+        }
+
+        volume {
+          name = "docker-sock"
+          host_path = { path = "/var/run" }
         }
       }
     }
