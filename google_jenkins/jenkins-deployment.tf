@@ -8,21 +8,13 @@ resource "kubernetes_deployment" "jenkins-deployment" {
     }
   }
 
-  spec {
-    replicas = 1
+  spec { replicas = 1
 
-    selector {
-      match_labels {
-        test = "jenkins"
-      }
+    selector { match_labels { test = "jenkins" }
     }
 
     template {
-      metadata {
-        labels {
-          test = "jenkins"
-        }
-      }
+      metadata { labels { test = "jenkins" } }
 
     spec {
       container {
@@ -30,17 +22,17 @@ resource "kubernetes_deployment" "jenkins-deployment" {
           name  = "jenkins"
 
           }
+
           volume_mount {
               mount_path = "/var/run"
               name = "docker-sock"
               }
+
           volume {
                host_path = "/var/run"
                name = "docker-sock"
                }
-          }
-        }
-      }
-    }
-  }
-}
+             }
+           }
+         }
+       }
