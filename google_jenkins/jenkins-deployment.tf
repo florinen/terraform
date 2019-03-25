@@ -2,7 +2,7 @@ resource "kubernetes_deployment" "jenkins-deployment" {
   metadata {
     name      = "terraform-jenkins"
     namespace = "tools"
-  
+
     labels {
       test = "jenkins"
     }
@@ -23,22 +23,20 @@ resource "kubernetes_deployment" "jenkins-deployment" {
           test = "jenkins"
         }
       }
-    
+
     spec {
       container {
           image = "fsadykov/centos_jenkins:0.2"
           name  = "jenkins"
 
-         resources {
-            limits {
-              cpu    = "2"
-              memory = "500Mi"
-            }
-
-            requests {
-              cpu    = "2"
-              memory = "500Mi"    
-           }
+          }
+          volumeMounts {
+              mountPath = "/var/run"
+              name = "docker-sock"
+              }
+          volumes {
+               name = "docker-sock"
+               }
           }
         }
       }

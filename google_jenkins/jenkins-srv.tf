@@ -6,7 +6,7 @@ resource "kubernetes_service" "jenkins-srv" {
 
   spec {
     selector {
-      app = "${kubernetes_pod.jenkins-pod.metadata.0.labels.app}"
+      test = "jenkins"
     }
 
     port {
