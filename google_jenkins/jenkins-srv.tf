@@ -1,16 +1,18 @@
-resource "kubernetes_service" "jenkins-srv" {
+resource "kubernetes_service" "jenkins-service" {
   metadata {
-    name = "terraform-jenkins"
+    name = "jenkins-service"
     namespace = "tools"
   }
 
   spec {
-    selector { app = "jenkins-terraform-deployment" }
-
+    selector { app = "jenkins-pod" }
     port {
-      port        = 80
+
+      protocol = "TCP"
+      port = 80
       target_port = 8080
     }
+
     type = "LoadBalancer"
   }
 }

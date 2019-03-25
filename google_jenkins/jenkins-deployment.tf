@@ -8,11 +8,11 @@ resource "kubernetes_deployment" "terraform-jenkins" {
   spec {
     replicas = 1
 
-    selector { match_labels { app = "jenkins-terraform" }
+    selector { match_labels { app = "jenkins-pod" }
     }
 
     template {
-      metadata { labels { app = "jenkins-terraform" }
+      metadata { labels { app = "jenkins-pod" }
       }
 
       spec {
