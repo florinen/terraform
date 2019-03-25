@@ -31,7 +31,7 @@ resource "kubernetes_deployment" "jenkins-deployment" {
 
           }
           volumeMounts {
-              mountPath = "/var/run"
+              volume_path = "/var/run"
               name = "docker-sock"
               }
           volumes {
