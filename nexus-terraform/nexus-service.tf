@@ -1,7 +1,7 @@
 resource "kubernetes_service" "nexus-svc" {
   metadata {
     name = "terraform-nexus"
-    namespace = "prod"
+    namespace = "tools"
   }
   spec {
     selector {
@@ -19,7 +19,7 @@ resource "kubernetes_service" "nexus-svc" {
 resource "kubernetes_pod" "nexus-pod" {
   metadata {
     name = "terraform-nexus"
-    namespace = "prod"
+    namespace = "tools"
     labels {
       app = "nexus"
     }

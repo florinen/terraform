@@ -18,7 +18,7 @@ resource "kubernetes_persistent_volume" "nexus-pv" {
 resource "kubernetes_persistent_volume_claim" "nexus-pvc" {
   metadata {
     name = "terraform-nexus"
-    namespace = "prod"
+    namespace = "tools"
   }
   spec {
     access_modes = ["ReadWriteOnce"]

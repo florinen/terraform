@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "nexus-deployment" {
   metadata {
     name      = "terraform-nexus"
-    namespace = "prod"
+    namespace = "tools"
     labels {
       test = "nexus"
     }
