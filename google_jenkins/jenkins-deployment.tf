@@ -1,12 +1,12 @@
 resource "kubernetes_deployment" "terraform-jenkins" {
   metadata {
     name = "terraform-jenkins"
-    labels { app = "jenkins-terraform" }
+    labels { app = "jenkins-terraform-deployment" }
     namespace = "tools"
   }
 
   spec {
-    replicas = 3
+    replicas = 1
 
     selector { match_labels { app = "jenkins-terraform" }
     }
@@ -17,7 +17,7 @@ resource "kubernetes_deployment" "terraform-jenkins" {
 
       spec {
         container {
-          image = "fsadykov/centos_jenkins:0.2"
+          image = "fsadykov/centos_jenkins:0.3"
           name  = "jenkins"
 
           volume_mount {
@@ -26,9 +26,10 @@ resource "kubernetes_deployment" "terraform-jenkins" {
           }
 
         }
+
         volume {
           name = "docker-sock"
-          host_path = { path = "/var/run/docker.sock" }
+          host_path = { path = "/var/run" }
         }
       }
     }

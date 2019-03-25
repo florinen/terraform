@@ -5,7 +5,7 @@ resource "kubernetes_service" "jenkins-srv" {
   }
 
   spec {
-    selector { app = "jenkins-terraform" }
+    selector { app = "jenkins-terraform-deployment" }
 
     port {
       port        = 80
