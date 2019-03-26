@@ -1,34 +1,18 @@
 resource "kubernetes_service" "jira-svs" {
   metadata {
-    name = "terraform-jira"
+    name = "jira-svs"
     namespace = "tools"
   }
 
   spec {
-    selector { app = "terraform-jira"  }
+    selector { app = "jira-pod"  }
 
     port {
+      protocol = "TCP"
       port        = 80
       target_port = 8080
     }
 
     type = "LoadBalancer"
-  }
-}
-
-resource "kubernetes_pod" "jira-pod" {
-  metadata {
-    name = "terraform-jira"
-
-    labels {
-      app = "jira"
-    }
-  }
-
-  spec {
-    container {
-      image = "gcr.io/hightowerlabs/jira:7.3.6-standalone"
-      name  = "jira"
-    }
   }
 }
