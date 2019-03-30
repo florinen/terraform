@@ -2,7 +2,7 @@ resource "kubernetes_deployment" "terraform-jenkins" {
   metadata {
     name = "terraform-jenkins"
     labels { app = "jenkins-terraform-deployment" }
-    namespace = "tools"
+    namespace = "apps"
   }
 
   spec {

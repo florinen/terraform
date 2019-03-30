@@ -1,7 +1,7 @@
 resource "kubernetes_service" "jenkins-service" {
   metadata {
     name = "jenkins-service"
-    namespace = "tools"
+    namespace = "apps"
   }
 
   spec {
