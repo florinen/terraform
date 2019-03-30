@@ -7,7 +7,7 @@ resource "kubernetes_service" "jenkins-service" {
   spec {
     selector { app = "jenkins-pod" }
     external_ips {
-      ip = 10.10.40.50
+      ip = 10.10.40.50/32
     }
     port {
 
