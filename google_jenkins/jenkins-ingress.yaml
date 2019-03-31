@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: simple-fanout
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: jenkins.varu.local
+    http:
+      paths:
+      - path: /jenkins
+        backend:
+          serviceName: jenkins-service
+          servicePort: 31632
+      - path: /vault
+        backend:
+          serviceName: service2
+          servicePort: 31164
