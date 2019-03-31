@@ -14,6 +14,6 @@ resource "kubernetes_service" "jenkins-service" {
     }
 
     type = "LoadBalancer"
-    external_ips = "10.10.40.50"
+    external_ips = ["10.10.40.50" ]
   }
 }
