@@ -54,4 +54,4 @@ resource "kubernetes_deployment" "jira-deployment" {
       }
     }
   }
-}
+
