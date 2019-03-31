@@ -9,7 +9,7 @@ resource "kubernetes_service" "jenkins-service" {
     port {
 
       protocol = "TCP"
-      port = 80
+      port = 81
       target_port = 8080
     }
 
